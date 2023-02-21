@@ -2,16 +2,18 @@ package bgnc.io.rentACar.business.concretes;
 
 import bgnc.io.rentACar.business.abstracts.BrandService;
 import bgnc.io.rentACar.business.requests.CreateBrandRequest;
+import bgnc.io.rentACar.business.requests.UpdateBrandRequest;
 import bgnc.io.rentACar.business.responses.GetAllBrandsResponse;
+import bgnc.io.rentACar.business.responses.GetByIdBrandResponse;
 import bgnc.io.rentACar.core.utilities.mappers.ModelMapperService;
 import bgnc.io.rentACar.dataAccess.abstracts.BrandRepository;
 import bgnc.io.rentACar.model.concretes.Brand;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 @AllArgsConstructor
@@ -24,14 +26,13 @@ public class BrandManager implements BrandService {
     public List<GetAllBrandsResponse> getAll() {
 
         List<Brand> brands = brandRepository.findAll();
-        List<GetAllBrandsResponse> brandsResponses=brands.
+
+        return brands.
                 stream()
                 .map(brand ->
                         this.modelMapperService.
                                 forResponse().
                                 map(brand,GetAllBrandsResponse.class)).toList();
-
-        return  brandsResponses;
     }
 
     @Override
@@ -40,5 +41,25 @@ public class BrandManager implements BrandService {
                 forRequest().
                 map(createBrandRequest,Brand.class);
         this.brandRepository.save(brand);
+    }
+
+    @Override
+    public void update(UpdateBrandRequest updateBrandRequest) {
+
+        Brand brand = this.modelMapperService.forRequest().map(updateBrandRequest,Brand.class);
+        this.brandRepository.save(brand);
+    }
+
+    @Override
+    public void delete(int id) {
+
+        this.brandRepository.deleteById(id);
+    }
+
+    @Override
+    public GetByIdBrandResponse getById(int id) {
+        Brand brand = this.brandRepository.findById(id).orElseThrow();
+        return this.modelMapperService.forResponse().map(brand,GetByIdBrandResponse.class);
+
     }
 }
