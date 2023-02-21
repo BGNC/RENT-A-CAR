@@ -1,32 +1,25 @@
 package bgnc.io.rentACar.model.concretes;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
+
+@Table(name = "brands")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Brand {
 
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id")
     private int id;
+    @Column(name = "name")
     private String name;
 
-    public Brand(){
 
-    }
-
-    public Brand(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
 }
