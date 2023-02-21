@@ -5,6 +5,7 @@ import bgnc.io.rentACar.business.requests.CreateBrandRequest;
 import bgnc.io.rentACar.business.responses.GetAllBrandsResponse;
 import lombok.AllArgsConstructor;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,12 +19,13 @@ public class BrandsController {
 
     private BrandService brandService;
 
-    @GetMapping("/getall")
+    @GetMapping("")
     public List<GetAllBrandsResponse> getAll(){
         return brandService.getAll();
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
+    @ResponseStatus(code = HttpStatus.CREATED)
     public void add(@RequestBody() CreateBrandRequest createBrandRequest){
         this.brandService.add(createBrandRequest);
     }
