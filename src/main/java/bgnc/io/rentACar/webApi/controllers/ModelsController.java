@@ -4,6 +4,7 @@ package bgnc.io.rentACar.webApi.controllers;
 import bgnc.io.rentACar.business.abstracts.ModelService;
 import bgnc.io.rentACar.business.requests.CreateModelRequest;
 import bgnc.io.rentACar.business.responses.GetAllModelsResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +27,7 @@ public class ModelsController {
 
     @PostMapping("")
     @ResponseStatus(code = CREATED)
-    public void add(@RequestBody CreateModelRequest createModelRequest){
+    public void add(@RequestBody @Valid() CreateModelRequest createModelRequest){
         this.modelService.add(createModelRequest);
     }
 
