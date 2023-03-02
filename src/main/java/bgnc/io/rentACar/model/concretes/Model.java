@@ -21,6 +21,8 @@ public class Model {
     @Column(name="name")
     private String name;
 
+    @ManyToOne
+    private Brand brand;
 
 
 

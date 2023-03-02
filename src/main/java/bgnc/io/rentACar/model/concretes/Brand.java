@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Table(name = "brands")
@@ -22,5 +24,8 @@ public class Brand {
     @Column(name = "name")
     private String name;
 
+
+    @OneToMany
+    List<Model> models;
 
 }
