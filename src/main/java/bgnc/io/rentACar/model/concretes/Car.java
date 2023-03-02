@@ -23,7 +23,7 @@ public class Car {
     /*
     * Example Plate : 34 ONR 1997
     *  */
-    @Column(name="plate")
+    @Column(name="plate", unique = true)
     private String plate;
 
 
