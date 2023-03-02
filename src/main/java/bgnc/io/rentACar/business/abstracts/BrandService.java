@@ -19,4 +19,6 @@ public interface BrandService {
     void delete(int id);
 
     GetByIdBrandResponse getById(int id);
+
+
 }

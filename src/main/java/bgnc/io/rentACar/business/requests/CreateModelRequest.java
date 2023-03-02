@@ -1,15 +1,14 @@
-package bgnc.io.rentACar.business.responses;
+package bgnc.io.rentACar.business.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class GetAllModelsResponse {
+public class CreateModelRequest {
 
-    private int id;
     private String name;
-    private String brandName;
+
 }
