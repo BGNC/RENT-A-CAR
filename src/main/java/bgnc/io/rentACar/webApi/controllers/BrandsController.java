@@ -1,19 +1,15 @@
 package bgnc.io.rentACar.webApi.controllers;
-
 import bgnc.io.rentACar.business.abstracts.BrandService;
 import bgnc.io.rentACar.business.requests.CreateBrandRequest;
 import bgnc.io.rentACar.business.requests.UpdateBrandRequest;
 import bgnc.io.rentACar.business.responses.GetAllBrandsResponse;
 import bgnc.io.rentACar.business.responses.GetByIdBrandResponse;
 import lombok.AllArgsConstructor;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
-/**
- **/
+
 @RestController
 @RequestMapping("/api/brands")
 @AllArgsConstructor
