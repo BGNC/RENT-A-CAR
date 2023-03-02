@@ -9,4 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BrandRepository extends JpaRepository<Brand,Integer> {
 
+    /*
+    spring jpa keywords;
+    * **/
+    boolean existsByName(String name);
+
 }
