@@ -5,12 +5,11 @@ import bgnc.io.rentACar.business.abstracts.ModelService;
 import bgnc.io.rentACar.business.requests.CreateModelRequest;
 import bgnc.io.rentACar.business.responses.GetAllModelsResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/api/models")
@@ -26,6 +25,7 @@ public class ModelsController {
     }
 
     @PostMapping("")
+    @ResponseStatus(value = CREATED)
     public void add(CreateModelRequest createModelRequest){
         this.modelService.add(createModelRequest);
     }

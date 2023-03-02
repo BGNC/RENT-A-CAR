@@ -4,6 +4,7 @@ import bgnc.io.rentACar.business.requests.CreateBrandRequest;
 import bgnc.io.rentACar.business.requests.UpdateBrandRequest;
 import bgnc.io.rentACar.business.responses.GetAllBrandsResponse;
 import bgnc.io.rentACar.business.responses.GetByIdBrandResponse;
+import bgnc.io.rentACar.business.rules.BrandBusinessRules;
 import bgnc.io.rentACar.core.utilities.mappers.ModelMapperService;
 import bgnc.io.rentACar.dataAccess.abstracts.BrandRepository;
 import bgnc.io.rentACar.model.concretes.Brand;
@@ -18,6 +19,7 @@ public class BrandManager implements BrandService {
 
     private BrandRepository brandRepository;
     private ModelMapperService modelMapperService;
+    private BrandBusinessRules brandBusinessRules;
 
     @Override
     public List<GetAllBrandsResponse> getAll() {
@@ -35,6 +37,8 @@ public class BrandManager implements BrandService {
 
     @Override
     public void add(CreateBrandRequest createBrandRequest) {
+
+        this.brandBusinessRules.checkIfBrandNameExists(createBrandRequest.getName());
 
         Brand brand = this.modelMapperService.
                 forRequest().

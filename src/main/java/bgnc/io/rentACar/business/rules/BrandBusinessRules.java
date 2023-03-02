@@ -1,5 +1,6 @@
 package bgnc.io.rentACar.business.rules;
 
+import bgnc.io.rentACar.core.utilities.exceptions.BusinessException;
 import bgnc.io.rentACar.dataAccess.abstracts.BrandRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,9 @@ public class BrandBusinessRules {
 
     public void checkIfBrandNameExists(String name){
 
-
         if(this.brandRepository.existsByName(name)){
 
+            throw new BusinessException("Brand name already exists");
 
         }
 
