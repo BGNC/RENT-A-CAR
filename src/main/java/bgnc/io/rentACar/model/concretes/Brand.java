@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -25,7 +26,7 @@ public class Brand {
     private String name;
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "brand")
     List<Model> models;
 
 }
