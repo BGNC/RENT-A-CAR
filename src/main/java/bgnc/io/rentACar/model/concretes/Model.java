@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 import static jakarta.persistence.GenerationType.*;
 
 @Table(name="models")
@@ -24,6 +26,10 @@ public class Model {
     @ManyToOne
     @JoinColumn(name = "brand_id")
     private Brand brand;
+
+
+    @OneToMany(mappedBy = "model")
+    List<Car> cars;
 
 
 
